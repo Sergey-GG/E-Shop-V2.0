@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Milk products</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<header th:insert="blocs/header.html :: header"></header>
+<div class="container mt = 5">
+    <h1>Milk products</h1>
+    <div th:each="product : ${milkProducts}">
+        <a th:href="@{/products/{id}(id=${product.getId()})}"
+           th:text="${product.getName() + ', ' + product.getPrice()}">user</a>
+    </div>
+</div>
+<footer th:insert="blocs/footer.html :: footer"></footer>
+</html>
