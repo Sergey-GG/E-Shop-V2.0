@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class ProductDAO {
     PreparedStatement preparedStatement;
-    static private Long PRODUCTS_COUNT = 0L;
+    static private int PRODUCTS_COUNT = 0;
     static Connection connection;
     static final String URL = "jdbc:postgresql://localhost:5432/e_shop_db";
     static final String USERNAME = "postgres";
@@ -41,7 +41,7 @@ public class ProductDAO {
     }
 
     public List<Product> getProducts(String type) {
-        PRODUCTS_COUNT = 0L;
+        PRODUCTS_COUNT = 0;
         List<Product> products = new ArrayList<>();
         List<Product> milkProducts = new ArrayList<>();
         List<Product> meatProducts = new ArrayList<>();
@@ -119,7 +119,7 @@ public class ProductDAO {
 //    public void create(Product product1) {
 //        try {
 //            preparedStatement = connection.prepareStatement("INSERT INTO products VALUES(?,?,?,?,?)");
-//            preparedStatement.setLong(1, ++PRODUCTS_COUNT);
+//            preparedStatement.setInt(1, ++PRODUCTS_COUNT);
 //            preparedStatement.setString(2, product1.getName());
 //            preparedStatement.setDouble(3, product1.getWeight());
 //            preparedStatement.setDouble(4, product1.getPrice());
