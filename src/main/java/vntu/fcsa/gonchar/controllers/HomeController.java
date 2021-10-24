@@ -1,4 +1,4 @@
-package vntu.fcsa.gonchar.blog.controllers;
+package vntu.fcsa.gonchar.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

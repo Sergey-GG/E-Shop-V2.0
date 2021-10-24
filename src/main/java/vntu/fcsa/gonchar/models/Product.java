@@ -1,4 +1,4 @@
-package vntu.fcsa.gonchar.blog.models;
+package vntu.fcsa.gonchar.models;
 
 import jakarta.validation.constraints.*;
 import lombok.*;

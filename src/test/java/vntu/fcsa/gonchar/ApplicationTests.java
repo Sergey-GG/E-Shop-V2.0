@@ -1,10 +1,10 @@
-package vntu.fcsa.gonchar.blog;
+package vntu.fcsa.gonchar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BlogApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

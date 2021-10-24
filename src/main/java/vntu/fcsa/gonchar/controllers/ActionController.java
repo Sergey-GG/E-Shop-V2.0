@@ -1,4 +1,4 @@
-package vntu.fcsa.gonchar.blog.controllers;
+package vntu.fcsa.gonchar.controllers;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import vntu.fcsa.gonchar.blog.dao.ProductDAO;
-import vntu.fcsa.gonchar.blog.models.Product;
+import vntu.fcsa.gonchar.dao.ProductDAO;
+import vntu.fcsa.gonchar.models.Product;
 
 @Controller
 @RequestMapping("/products")

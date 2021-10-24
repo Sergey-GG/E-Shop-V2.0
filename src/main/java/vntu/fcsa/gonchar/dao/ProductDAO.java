@@ -1,11 +1,11 @@
-package vntu.fcsa.gonchar.blog.dao;
+package vntu.fcsa.gonchar.dao;
 
 import jakarta.validation.Valid;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
-import vntu.fcsa.gonchar.blog.models.Product;
+import vntu.fcsa.gonchar.models.Product;
 
 import java.sql.*;
 import java.util.ArrayList;

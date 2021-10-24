@@ -1,13 +1,13 @@
-package vntu.fcsa.gonchar.blog;
+package vntu.fcsa.gonchar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BlogApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlogApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 
