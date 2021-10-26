@@ -9,9 +9,9 @@
         <relativePath/>
     </parent>
     <groupId>vntu.fcsa.gonchar</groupId>
-    <artifactId>blog</artifactId>
+    <artifactId>E-Shop-V.2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>blog</name>
+    <name>E-Shop-V.2</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>

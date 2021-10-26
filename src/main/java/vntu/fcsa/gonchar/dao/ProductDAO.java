@@ -21,6 +21,7 @@ public class ProductDAO {
     static final String USERNAME = "postgres";
     static final String PASSWORD = "eshop";
     Product product;
+
     SessionFactory factory = new Configuration()
             .configure("hibernate.cfg.xml")
             .addAnnotatedClass(Product.class)
@@ -131,13 +132,11 @@ public class ProductDAO {
 //    }
 
     public void create(Product product1) {
-        try {
-            Session session = factory.getCurrentSession();
+        try (SessionFactory localFactory = factory) {
+            Session session = localFactory.getCurrentSession();
             session.beginTransaction();
             session.save(product1);
             session.getTransaction().commit();
-        } finally {
-            factory.close();
         }
     }
 
