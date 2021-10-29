@@ -3,12 +3,14 @@ package vntu.fcsa.gonchar.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vntu.fcsa.gonchar.dao.ProductDAO;
 import vntu.fcsa.gonchar.repositories.ProductRepository;
 
 @Controller
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/products")
 public class ProductController {
     private final ProductDAO productDAO;

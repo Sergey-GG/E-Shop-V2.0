@@ -9,9 +9,9 @@
 
 
 <div class="container mt = 5">
-    <h1>List of all products</h1>
-    <div th:each="product : ${products}">
-        <a th:href="@{/admin/products/show/{id}(id=${product.getId()})}"
+    <h1>Drinks</h1>
+    <div th:each="product : ${drinks}">
+        <a th:href="@{/templates/moderator/products/show/{id}(id=${product.getId()})}"
            th:text="${product.getName() + ', ' + product.getPrice()}">user</a>
     </div>
 

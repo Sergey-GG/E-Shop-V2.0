@@ -1,11 +1,8 @@
 package vntu.fcsa.gonchar.dao;
 
 import jakarta.validation.Valid;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
-import vntu.fcsa.gonchar.models.Product;
+import vntu.fcsa.gonchar.entities.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,10 +19,15 @@ public class ProductDAO {
     static final String PASSWORD = "eshop";
     Product product;
 
+/*
+    EntityManagerFactory emf =
+            Persistence.createEntityManagerFactory("");
     SessionFactory factory = new Configuration()
             .configure("hibernate.cfg.xml")
             .addAnnotatedClass(Product.class)
             .buildSessionFactory();
+
+ */
 
 
     static {
@@ -74,7 +76,7 @@ public class ProductDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        products.sort(Comparator.comparing(Product::getId));
+        products.sort(Comparator.comparing(Product::getType));
         milkProducts.sort(Comparator.comparing(Product::getId));
         meatProducts.sort(Comparator.comparing(Product::getId));
         drinks.sort(Comparator.comparing(Product::getId));
@@ -117,28 +119,52 @@ public class ProductDAO {
         return product;
     }
 
+    public void create(Product product1) {
+        try {
+            getProducts("all");
+            preparedStatement = connection.prepareStatement("INSERT INTO products VALUES(?,?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+
+            preparedStatement.setInt(1,++PRODUCTS_COUNT);
+            preparedStatement.setString(2, product1.getName());
+            preparedStatement.setDouble(3, product1.getWeight());
+            preparedStatement.setDouble(4, product1.getPrice());
+            preparedStatement.setString(5, product1.getType());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 //    public void create(Product product1) {
-//        try {
-//            preparedStatement = connection.prepareStatement("INSERT INTO products VALUES(?,?,?,?,?)");
-//            preparedStatement.setInt(1, ++PRODUCTS_COUNT);
-//            preparedStatement.setString(2, product1.getName());
-//            preparedStatement.setDouble(3, product1.getWeight());
-//            preparedStatement.setDouble(4, product1.getPrice());
-//            preparedStatement.setString(5, product1.getType());
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
+//        try (SessionFactory localFactory = factory) {
+//            EntityManager em =emf.createEntityManager();
+//            Session session = localFactory.getCurrentSession();
+//            session.beginTransaction();
+//            session.save(product1);
+//            session.getTransaction().commit();
+//        }
+//    }
+//    public void update(int id,Product product1) {
+//        try (SessionFactory localFactory = factory) {
+//            EntityManager em =emf.createEntityManager();
+//            Session session = localFactory.getCurrentSession();
+//            session.beginTransaction();
+//            session.update(product1);
+//            session.getTransaction().commit();
 //        }
 //    }
 
-    public void create(Product product1) {
-        try (SessionFactory localFactory = factory) {
-            Session session = localFactory.getCurrentSession();
-            session.beginTransaction();
-            session.save(product1);
-            session.getTransaction().commit();
-        }
-    }
+//    public void deleteByHibernate(int id){
+//        try(SessionFactory localFactory = factory){
+//            Session session = localFactory.getCurrentSession();
+//            session.beginTransaction();
+//            session.createQuery("DELETE FROM Product WHERE id=?");
+//
+//
+//        }
+//    }
+
 
     public void update(int id, @Valid Product product2) {
         try {
@@ -163,7 +189,7 @@ public class ProductDAO {
             preparedStatement =
                     connection.prepareStatement("DELETE FROM products WHERE id=?");
 
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
             --PRODUCTS_COUNT;
@@ -177,7 +203,7 @@ public class ProductDAO {
             read(id);
             preparedStatement
                     = connection.prepareStatement("UPDATE products SET weight =? WHERE id = ?");
-            preparedStatement.setLong(2, id);
+            preparedStatement.setInt(2, id);
             celledProduct.setName(product.getName());
             celledProduct.setPrice(product.getPrice());
             celledProduct.setType(product.getType());

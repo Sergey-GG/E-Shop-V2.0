@@ -1,4 +1,4 @@
-package vntu.fcsa.gonchar.models;
+package vntu.fcsa.gonchar.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,7 +46,5 @@ public class Product {
         this.price = price;
         this.type = type;
     }
-
-
 
 }

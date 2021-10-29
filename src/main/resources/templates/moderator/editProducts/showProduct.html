@@ -13,8 +13,8 @@
 <p th:text="${'Id: '+product.getId()}">VALUE</p>
 <p th:text="${'Type: '+product.getType()}">VALUE</p>
 
-<a th:href="@{/admin/products/{id}/edit(id=${product.getId()})}">Edit</a><p/>
-<form th:method="POST" th:action="@{/admin/products/{id}/delete(id=${product.getId()})}">
+<a th:href="@{/templates/moderator/products/{id}/edit(id=${product.getId()})}">Edit</a><p/>
+<form th:method="POST" th:action="@{/templates/moderator/products/{id}/delete(id=${product.getId()})}">
     <input type="submit" value="Delete"/>
 </form>
 </body>
