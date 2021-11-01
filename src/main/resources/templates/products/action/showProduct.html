@@ -12,7 +12,7 @@
     <p th:text="${'Weight: ' + product.getWeight()}">VALUE</p>
     <p th:text="${'Id: '+product.getId()}">VALUE</p>
     <p th:text="${'Type: '+product.getType()}">VALUE</p>
-    <form th:method="GET" th:action="@{/products/{id}/buy(id=${product.getId()})}">
+    <form th:method="GET" th:action="@{/product/{id}/buy(id=${product.getId()})}">
         <input type="submit" value="Buy"/>
     </form>
 </div>

@@ -1,7 +1,6 @@
 package vntu.fcsa.gonchar.controllers;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,20 +32,28 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class AuthController {
-    @Autowired
+
     AuthenticationManager authenticationManager;
 
-    @Autowired
+
     UserRepository userRepository;
 
-    @Autowired
+
     RoleRepository roleRepository;
 
-    @Autowired
+
     PasswordEncoder passwordEncoder;
 
-    @Autowired
+
     JwtUtils jwtUtils;
+
+    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JwtUtils jwtUtils) {
+        this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtUtils = jwtUtils;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> authUser(@RequestBody LoginRequest loginRequest) {

@@ -8,7 +8,7 @@
 <header th:insert="blocs/header.html :: header"></header>
 <body class="container">
 
-<form th:method="POST" th:action="@{/products/{id}/buy(id=${product.getId()})}" th:object="${product}">
+<form th:method="POST" th:action="@{/product/{id}/buy(id=${product.getId()})}" th:object="${product}">
     <br/><h2>Buy product</h2><br/>
     <p th:text="${product.getName() + ', Price:' + product.getPrice()}">VALUE</p>
     <p th:text="${'Weight: ' + product.getWeight()}">VALUE</p>

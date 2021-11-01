@@ -11,12 +11,12 @@
 <div class="container mt = 5">
     <h1>Meat products</h1>
     <div th:each="product : ${meatProducts}">
-        <a th:href="@{/templates/moderator/products/show/{id}(id=${product.getId()})}"
+        <a th:href="@{/moder/product/{id}(id=${product.getId()})}"
            th:text="${product.getName() + ', ' + product.getPrice()}">user</a>
     </div>
 
 </div>
-<div class="container mt-5"><p><a href="/admin/products/new">Create new product</a></p></div>
+<div class="container mt-5"><p><a href="/moder/products/new">Create new product</a></p></div>
 
 <footer th:insert="blocs/footer.html :: footer"></footer>
 </html>

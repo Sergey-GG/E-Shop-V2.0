@@ -9,7 +9,7 @@
 <div class="container mt = 5">
     <h1>Milk products</h1>
     <div th:each="product : ${milkProducts}">
-        <a th:href="@{/products/{id}(id=${product.getId()})}"
+        <a th:href="@{/product/{id}(id=${product.getId()})}"
            th:text="${product.getName() + ', ' + product.getPrice()}">user</a>
     </div>
 </div>
